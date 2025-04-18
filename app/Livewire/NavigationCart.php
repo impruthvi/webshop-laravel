@@ -3,16 +3,16 @@
 namespace App\Livewire;
 
 use App\Factories\CartFactory;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class NavigationCart extends Component
 {
 
-    public $listeners = [
-        'product-added-to-cart' => '$refresh',
-    ];
-
-    public function getCountProperty()
+    #[Computed]
+    #[On('product-added-to-cart')]
+    public function count()
     {
         return CartFactory::make()->items()->sum('quantity');
     }

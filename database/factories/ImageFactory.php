@@ -18,21 +18,21 @@ class ImageFactory extends Factory
     {
         return [
             'path' => $this->faker->unique()->randomElement([
-                'media/example1.jpg',
-                'media/example2.jpg',
-                'media/example3.jpg',
-                'media/example4.jpg',
-                'media/example5.jpg',
-                'media/example6.jpg',
-                'media/example7.jpg',
-                'media/example8.jpg',
-                'media/example9.jpg',
-                'media/example10.jpg',
-                'media/example11.jpg',
-                'media/example12.jpg',
-                'media/example13.jpg',
-                'media/example14.jpg',
-                'media/example15.jpg'
+                'media/example1.jpeg',
+                'media/example2.jpeg',
+                'media/example3.jpeg',
+                'media/example4.jpeg',
+                'media/example5.jpeg',
+                'media/example6.jpeg',
+                'media/example7.jpeg',
+                'media/example8.jpeg',
+                'media/example9.jpeg',
+                'media/example10.jpeg',
+                'media/example11.jpeg',
+                'media/example12.jpeg',
+                'media/example13.jpeg',
+                'media/example14.jpeg',
+                'media/example15.jpeg'
             ]),
         ];
     }

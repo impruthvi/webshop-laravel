@@ -6,6 +6,8 @@
             </div>
             <div class="flex mt-10 mb-5">
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Name</h3>
+                <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Color</h3>
+                <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Size</h3>
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Subtotal</h3>
@@ -15,6 +17,12 @@
                 <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                     <div class="flex w-2/5">
                         <span class="font-bold text-sm">{{ $item->product->name }}</span>
+                    </div>
+                    <div class="text-center w-1/5">
+                        <span class="font-semibold text-sm">{{ $item->variant->color }}</span>
+                    </div>
+                    <div class="text-center w-1/5">
+                        <span class="font-semibold text-sm">{{ $item->variant->size }}</span>
                     </div>
                     <div class="flex justify-center w-1/5">
                         <button wire:click="decrementQuantity({{ $item->id }})"
@@ -58,7 +66,7 @@
             @endguest
             @auth
                 <div class="mt-10 text-right">
-                    <a href="{{ route('checkout') }}" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
+                    <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
                         Proceed to Checkout
                     </a>
                 </div>

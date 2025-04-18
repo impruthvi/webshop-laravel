@@ -9,6 +9,13 @@ use Livewire\Component;
 class Cart extends Component
 {
 
+
+    #[Computed]
+    public function cart()
+    {
+        return CartFactory::make()->loadMissing(['items', 'items.product', 'items.variant']);
+    }
+
     #[Computed]
     public function items()
     {

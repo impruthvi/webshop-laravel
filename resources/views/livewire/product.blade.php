@@ -1,10 +1,10 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-6 md:mt-12 my-4 mb-12">
     <!-- Main Image Section -->
-    <div class="space-y-4">
+    <div class="space-y-4" x-data="{ image: '/{{ $this->product->image->path }}' }">
         <!-- Main Product Image -->
         <div class="col-y-4">
             <div class="bg-white p-5 rounded-lg shadow">
-                <img src="/{{ $this->product->image->path }}" alt="{{ $this->product->name }}" class="w-full h-auto">
+                <img x-bind:src="image" alt="{{ $this->product->name }}" class="w-full h-auto">
             </div>
         </div>
 
@@ -12,7 +12,7 @@
         <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4">
             @foreach ($this->product->images as $image)
                 <div class="rounded bg-white p-2 shadow">
-                    <img src="/{{ $image->path }}" alt="{{ $this->product->name }}" class="w-full h-auto">
+                    <img src="/{{ $image->path }}" alt="{{ $this->product->name }}" class="w-full h-auto" @click="image = '/{{ $image->path }}'">
                 </div>
             @endforeach
         </div>

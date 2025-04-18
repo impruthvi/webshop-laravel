@@ -11,7 +11,7 @@ class NavigationCart extends Component
 {
 
     #[Computed]
-    #[On('product-added-to-cart')]
+    #[On(['product-added-to-cart', 'product-removed-from-cart', 'product-quantity-incremented', 'product-quantity-decremented'])]
     public function count()
     {
         return CartFactory::make()->items()->sum('quantity');

@@ -35,6 +35,8 @@ class Product extends Component
             'position' => 'top-right',
             'duration' => 3000,
         ]);
+
+        $this->dispatch('product-added-to-cart');
     }
 
     public function getProductProperty()

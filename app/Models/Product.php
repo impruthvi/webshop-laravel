@@ -2,31 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Casts\MoneyCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Money\Currency;
-use Money\Money;
 
 class Product extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
 
+    public $casts = [
+        'price' => MoneyCast::class,
+    ];
+
     protected $fillable = [
         'name',
         'price',
         'description',
     ];
-
-    protected function price(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => new Money($value, new Currency('USD')),
-        );
-    }
 
     public function variants(): HasMany
     {

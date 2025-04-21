@@ -55,6 +55,24 @@
             font-size: 0.9em;
             color: #666;
         }
+
+        .view-orders {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .view-orders a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .view-orders a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -129,6 +147,11 @@
         <h3>Total Amount: {{ $order->amount_total }}</h3>
 
         <p>If you have any questions, feel free to contact us.</p>
+
+        <div class="view-orders">
+            <a href="{{ route('order.show', $order->id) }}">View All Orders</a>
+        </div>
+
         <p class="footer">Thank you for shopping with us!</p>
     </div>
 </body>

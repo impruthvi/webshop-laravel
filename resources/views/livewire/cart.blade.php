@@ -66,9 +66,9 @@
             @endguest
             @auth
                 <div class="mt-10 text-right">
-                    <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
-                        Proceed to Checkout
-                    </a>
+                    <x-button class="bg-blue-500 text-white px-4 py-2 rounded" wire:click="checkout">
+                        Checkout
+                    </x-button>
                 </div>
             @endauth
         </div>

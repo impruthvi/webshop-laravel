@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Actions\Webshop\MigrateSessionCart;
 use App\Factories\CartFactory;
+use App\Listeners\StripeEventListener;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
@@ -15,6 +16,8 @@ use Money\Currencies\ISOCurrencies;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money;
 use NumberFormatter;
+use Illuminate\Support\Facades\Event;
+use Laravel\Cashier\Events\WebhookReceived;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
 
         Model::unguard();
         Cashier::calculateTaxes();
+
+        Event::listen(
+            WebhookReceived::class,
+            StripeEventListener::class,
+        );
 
         Fortify::authenticateUsing(function ($request) {
             $user = User::where('email', $request->email)->first();
@@ -57,7 +65,6 @@ class AppServiceProvider extends ServiceProvider
             $moneyFormatter = new IntlMoneyFormatter($numberFormatter, $currency);
 
             return $moneyFormatter->format($money);
-
         });
     }
 }

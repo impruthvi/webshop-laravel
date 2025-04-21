@@ -10,18 +10,22 @@ class CreateStripeCheckoutSession
     public function createFromCart(Cart $cart)
     {
         return $cart->user
-        ->allowPromotionCodes()
-        ->checkout(
-            $this->formateCartItems($cart->items),
-            [
-                'customer_update' => [
-                    'shipping' => 'auto',
+            ->allowPromotionCodes()
+            ->checkout(
+                $this->formateCartItems($cart->items),
+                [
+                    'customer_update' => [
+                        'shipping' => 'auto',
+                    ],
+                    'shipping_address_collection' => [
+                        'allowed_countries' => ['US', 'CA'],
+                    ],
+                    'metadata' => [
+                        'user_id' => $cart->user->id,
+                        'cart_id' => $cart->id,
+                    ]
                 ],
-                'shipping_address_collection' => [
-                    'allowed_countries' => ['US', 'CA'],
-                ],
-            ]
-        );
+            );
     }
 
     public function formateCartItems(Collection $items)
